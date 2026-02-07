@@ -113,7 +113,7 @@ function showContact(){
 
 function showNow(){
   writeLine('Currently working on:','');
-  writeLine('Nothing at the moment','small');
+  writeLine('Craig, a discord bot that responds to messages in the server in the tone of a divorced dad.','small');
   writeLine('','');
   writeLine('Currently interested in:','');
   const interests = [
