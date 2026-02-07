@@ -1,12 +1,30 @@
 Terminal-style Portfolio
 =======================
 
-This is a small static "terminal" portfolio meant for hosting on Cloudflare Pages (free).
+This is a small static "terminal" portfolio meant for hosting on Cloudflare Pages.
+
+Features
+- Interactive terminal interface with command history (arrow keys to navigate)
+- Live clock displaying date and time in the top-right corner
+- Resume download functionality
+- Multiple commands to explore profile, projects, skills, and interests
 
 Files
-- index.html — entry
-- styles.css — presentation
-- script.js — commands and typing effect
+- index.html — entry point
+- styles.css — styling
+- script.js — commands and typing effects
+- assets/Resume.pdf — downloadable resume
+- assets/photo.jpg — profile photo
+
+Commands
+- `help` — show available commands
+- `about` — short bio and profile photo
+- `skills` — list technologies
+- `projects` — list all projects
+- `contact` — contact info (email, GitHub, LinkedIn)
+- `now` — current focus and interests
+- `resume` — download resume PDF
+- `clear` — clear terminal
 
 Deploy to Cloudflare Pages (static site)
 
@@ -17,5 +35,6 @@ Deploy to Cloudflare Pages (static site)
 
 Customization
 
-- Edit `script.js` 
-- Style via `styles.css`.
+- Edit `script.js` to add commands or modify profile data
+- Style via `styles.css` (CSS variables at the top control the color scheme)
+- Add assets like photos or documents to the `assets/` folder

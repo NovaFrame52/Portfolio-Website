@@ -1,6 +1,7 @@
 :root{--bg:#071018;--panel:#0b1220;--accent:#6be5b6;--muted:#97a6b2;--text:#dff5ef}
 *{box-sizing:border-box}
 html,body{height:100%;margin:0;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;background:var(--bg);color:var(--text)}
+.clock{position:fixed;top:20px;right:20px;font-size:13px;color:var(--muted);font-weight:500;z-index:1000}
 .terminal{max-width:900px;margin:4vh auto;padding:20px;border-radius:8px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);box-shadow:0 10px 30px rgba(2,6,23,0.6);} 
 .output{min-height:60vh;white-space:pre-wrap;font-size:16px;line-height:1.45;padding-bottom:6px;color:var(--muted)}
 .prompt-line{display:flex;gap:10px;align-items:center}

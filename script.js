@@ -51,7 +51,7 @@ function commitTemp(){ tempEl=null }
 
 function showHelp(){
   writeLine('Available commands:','');
-    writeLine("help — show this help\nabout — short bio\nskills — list technologies\nprojects — list projects\ncontact — contact info\nresume — alias for projects\nclear — clear terminal",'small');
+    writeLine("help — show this help\nabout — short bio\nskills — list technologies\nprojects — list projects\ncontact — contact info\nresume — download resume PDF\nnow — what I'm working on\nclear — clear terminal",'small');
 }
 
 function showAbout(){
@@ -111,8 +111,26 @@ function showContact(){
   output.scrollTop = output.scrollHeight;
 }
 
+function showNow(){
+  writeLine('Currently working on:','');
+  writeLine('Nothing at the moment','small');
+  writeLine('','');
+  writeLine('Currently interested in:','');
+  const interests = [
+    'Docker — container orchestration and deployment',
+    'Document Archives — preservation and organization of leaked documents'
+  ];
+  interests.forEach(i => writeLine(i, 'small'));
+}
+
 function downloadResume(){
-// `resume` is repurposed as an alias for `projects` (no separate resume file)
+  const link = document.createElement('a');
+  link.href = 'assets/Resume.pdf';
+  link.download = 'Resume.pdf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  writeLine('Downloading Resume.pdf...','small');
 }
 
 function runCommand(cmd){
@@ -126,8 +144,9 @@ function runCommand(cmd){
     case 'skills': showSkills(); break;
     case 'projects': showProjects(); break;
     case 'contact': showContact(); break;
+    case 'now': showNow(); break;
     case 'resume':
-      showProjects();
+      downloadResume();
       break;
     case 'clear': output.innerHTML=''; break;
     default: writeLine(`Command not found: ${c} — type 'help'`, 'small');
@@ -153,6 +172,17 @@ typeLines(["\nTerminal Portfolio\n","Type 'help' to begin.\n"],0, ()=>{ cmdline.
 
 // focus on click
 document.getElementById('terminal').addEventListener('click', ()=> cmdline.focus());
+
+// live clock
+function updateClock(){
+  const now = new Date();
+  const timeStr = now.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit', second:'2-digit'});
+  const dateStr = now.toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'});
+  const clockEl = document.getElementById('clock');
+  if(clockEl) clockEl.textContent = `${dateStr} ${timeStr}`;
+}
+setInterval(updateClock, 1000);
+updateClock();
 
 // expose for debugging
 window._tp = {runCommand};
