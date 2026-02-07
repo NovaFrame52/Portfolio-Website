@@ -19,5 +19,3 @@ Customization
 
 - Edit `script.js` 
 - Style via `styles.css`.
-
-Want me to add: dark/light toggle, command autocompletions, or contact form? Open a request and I'll implement it.
