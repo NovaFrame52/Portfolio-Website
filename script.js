@@ -8,7 +8,7 @@ const projects = [
   {name: "This portfolio", desc: "Terminal-style portfolio site (this site)", status: 'Live'},
   {name: "Ron", desc: "A small, friendly Discord bot that provides utilities and small fun commands.", status: 'Live, Maintained'},
   {name: "Kevin", desc: "A Discord bot for reminders and periodic messages.", status: 'Live, Maintained'},
-  {name: "Craig", desc: "A Discord bot that responds to messages in the server in the tone of a divorced dad. ", status: 'Live, Maintained'},
+  {name: "Craig", desc: "A Discord bot that responds to messages in the server in the tone of a divorced dad.", status: 'Live, Maintained'},
   {name: "ClosetHelper", desc: "An app to help choose outfits for the day.", status: 'Uncompleted, Archived'},
   {name: "MindTab", desc: "Modular browser extension that tracks closed tabs visually, analyzes tone, and delivers micro-flashcards.", status: 'Not-Maintained, Archived'},
   {name: "Edio-Rework", desc: "Redesign of a high-school learning platform.", status: 'Completed, Archived'}
