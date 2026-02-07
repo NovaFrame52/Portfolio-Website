@@ -55,7 +55,21 @@ function showHelp(){
 }
 
 function showAbout(){
-  writeLine(`Hi — I'm ${profile.name}. I build web apps and experiments.\nI enjoy UI, tooling, and small delightful interactions.\nOS: Linux, MacOS`, '');
+  writeLine(`Hi — I'm ${profile.name}. I build web apps and experiments.`, '');
+  writeLine(`I enjoy UI, tooling, and small delightful interactions.`, '');
+  writeLine(`OS: Linux, MacOS`, '');
+  
+  // Add photo
+  const photoEl = document.createElement('div');
+  photoEl.style.cssText = 'margin: 16px 0; border-radius: 8px; overflow: hidden; max-width: 120px;';
+  const img = document.createElement('img');
+  img.src = 'assets/photo.jpg';
+  img.alt = profile.name;
+  img.style.cssText = 'width: 100%; height: auto; display: block; border: 1px solid rgba(107, 229, 182, 0.3);';
+  img.onerror = () => (img.style.display = 'none');
+  photoEl.appendChild(img);
+  output.appendChild(photoEl);
+  output.scrollTop = output.scrollHeight;
 }
 
 function showSkills(){
@@ -68,9 +82,33 @@ function showProjects(){
 }
 
 function showContact(){
-  writeLine(`Email: ${profile.email}`,'');
-  writeLine(`GitHub: ${profile.github}`,'small');
-  writeLine(`LinkedIn: ${profile.linkedin}`,'small');
+  // Email
+  const emailEl = document.createElement('div');
+  emailEl.style.cssText = 'margin: 8px 0; cursor: pointer;';
+  emailEl.innerHTML = `<span style="color: var(--muted);">Email: </span><span style="color: var(--accent); text-decoration: underline;">${profile.email}</span>`;
+  emailEl.title = 'Click to copy email';
+  emailEl.addEventListener('click', (e) => {
+    navigator.clipboard.writeText(profile.email).then(() => {
+      const orig = emailEl.innerHTML;
+      emailEl.innerHTML = `<span style="color: #6be5b6;">✓ Copied!</span>`;
+      setTimeout(() => (emailEl.innerHTML = orig), 2000);
+    });
+  });
+  output.appendChild(emailEl);
+  
+  // GitHub
+  const gitEl = document.createElement('div');
+  gitEl.style.cssText = 'margin: 8px 0; font-size: 14px; color: var(--muted);';
+  gitEl.innerHTML = `GitHub: <a href="${profile.github}" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: none;">${profile.github}</a>`;
+  output.appendChild(gitEl);
+  
+  // LinkedIn
+  const linkedinEl = document.createElement('div');
+  linkedinEl.style.cssText = 'margin: 8px 0; font-size: 14px; color: var(--muted);';
+  linkedinEl.innerHTML = `LinkedIn: <a href="${profile.linkedin}" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: none;">${profile.linkedin}</a>`;
+  output.appendChild(linkedinEl);
+  
+  output.scrollTop = output.scrollHeight;
 }
 
 function downloadResume(){
