@@ -1,0 +1,17 @@
+:root{--bg:#071018;--panel:#0b1220;--accent:#6be5b6;--muted:#97a6b2;--text:#dff5ef}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;background:var(--bg);color:var(--text)}
+.terminal{max-width:900px;margin:4vh auto;padding:20px;border-radius:8px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);box-shadow:0 10px 30px rgba(2,6,23,0.6);} 
+.output{min-height:60vh;white-space:pre-wrap;font-size:16px;line-height:1.45;padding-bottom:6px;color:var(--muted)}
+.prompt-line{display:flex;gap:10px;align-items:center}
+.prompt{color:var(--accent);font-weight:700}
+.cmdline{flex:1;background:transparent;border:none;outline:none;color:var(--text);font-size:16px}
+.cursor{display:inline-block;width:8px;height:18px;background:var(--text);margin-left:4px;animation:blink 1s steps(2,start) infinite;vertical-align:middle}
+@keyframes blink{50%{opacity:0}}
+.link{color:var(--accent);text-decoration:none}
+.cmd{color:#8bd3ff}
+.kv{color:#ffd86b}
+.small{color:var(--muted);font-size:14px}
+.footer{margin-top:12px;color:var(--muted);font-size:13px}
+button.cmdbtn{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);padding:6px 10px;border-radius:6px}
+@media (max-width:600px){.terminal{margin:2vh 12px;padding:14px}.output{font-size:15px}}
