@@ -5,31 +5,34 @@ This is a small static "terminal" portfolio meant for hosting on Cloudflare Page
 
 Features
 - Interactive terminal interface with command history (arrow keys to navigate)
-- Live clock displaying date and time in the top-right corner
+- Live clock displaying date & time in the top-right corner
 - Resume download functionality
-- Multiple commands to explore profile, projects, skills, and interests
+- Multiple commands to explore profile, projects, skills, & interests
 
 Files
-- index.html — entry point
-- styles.css — styling
-- script.js — commands and typing effects
-- assets/Resume.pdf — downloadable resume
-- assets/photo.jpg — profile photo
+- index.html — Entry Point
+- styles.css — Styling
+- script.js — Commands & Typing Effects
+- assets/Resume.pdf — Downloadable Resume
+- assets/photo.jpg — Profile Photo
+- assets/music/ambient-1.mp3 — First Ambient Music File
+- assets/music/ambient-2.mp3 — Second Ambient Music File
 
 Commands
-- `help` — show available commands
-- `about` — short bio and profile photo
-- `skills` — list technologies
-- `projects` — list all projects
-- `contact` — contact info (email, GitHub, LinkedIn)
-- `now` — current focus and interests
-- `resume` — download resume PDF
-- `clear` — clear terminal
+- `help` — Show Available Commands
+- `about` — Short Bio & Profile Photo
+- `skills` — List Technologies
+- `projects` — List All Projects
+- `contact` — Contact info (Email, GitHub, LinkedIn)
+- `now` — Current Focus & Interests
+- `resume` — Download Resume PDF
+- `clear` — Clear Terminal
+- `mute` — Toggle Ambient Music
 
 Deploy to Cloudflare Pages (static site)
 
 1. Push this repository to GitHub.
-2. In Cloudflare Pages, create a new project and connect to the repo.
+2. In Cloudflare Pages, create a new project & connect to the repo.
 3. Build command: leave blank. Build directory: `/` (root).
 4. Save and deploy.
 

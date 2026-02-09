@@ -4,8 +4,53 @@ const cmdline = document.getElementById('cmdline');
 const promptChar = '$';
 let history = []; let hpos = 0;
 
+// Ambient music setup
+let audioTracks = [];
+let currentTrackIndex = 0;
+let isMuted = false;
+
+function initializeAudio() {
+  const trackNames = ['ambient-1.mp3', 'ambient-2.mp3'];
+  trackNames.forEach((name, idx) => {
+    const audio = document.createElement('audio');
+    audio.src = `assets/Music/${name}`;
+    audio.volume = 0.2;
+    audio.addEventListener('ended', playNextTrack);
+    audioTracks.push(audio);
+  });
+  if (audioTracks.length > 0) {
+    audioTracks[0].play().catch(() => {
+      console.log('Auto-play prevented: user interaction required');
+    });
+  }
+}
+
+function playNextTrack() {
+  if (isMuted) return;
+  currentTrackIndex = (currentTrackIndex + 1) % audioTracks.length;
+  audioTracks.forEach((track, idx) => {
+    track.pause();
+    track.currentTime = 0;
+  });
+  audioTracks[currentTrackIndex].play().catch(e => console.log('Play error:', e));
+}
+
+function toggleMute() {
+  isMuted = !isMuted;
+  audioTracks.forEach(track => {
+    if (isMuted) {
+      track.pause();
+    }
+  });
+  if (!isMuted && audioTracks[currentTrackIndex]) {
+    audioTracks[currentTrackIndex].play().catch(e => console.log('Play error:', e));
+  }
+  writeLine(`Music: ${isMuted ? 'muted' : 'unmuted'}`, 'small');
+}
+
 const projects = [
   {name: "This portfolio", desc: "Terminal-style portfolio site (this site)", status: 'Live'},
+  {name: "KitBash", desc: "A beautiful, feature-rich multi-tool website built with pure HTML, CSS, and vanilla JavaScript. ", status: 'Live'},
   {name: "Ron", desc: "A small, friendly Discord bot that provides utilities and small fun commands.", status: 'Live, Maintained'},
   {name: "Kevin", desc: "A Discord bot for reminders and periodic messages.", status: 'Live, Maintained'},
   {name: "Craig", desc: "A Discord bot that responds to messages in the server in the tone of a divorced dad.", status: 'Live, Maintained'},
@@ -52,7 +97,7 @@ function commitTemp(){ tempEl=null }
 
 function showHelp(){
   writeLine('Available commands:','');
-    writeLine("help — show this help\nabout — short bio\nskills — list technologies\nprojects — list projects\ncontact — contact info\nresume — download resume PDF\nnow — what I'm working on\nclear — clear terminal",'small');
+    writeLine("help — show this help\nabout — short bio\nskills — list technologies\nprojects — list projects\ncontact — contact info\nresume — download resume PDF\nnow — what I'm working on\nmute — toggle ambient music\nclear — clear terminal",'small');
 }
 
 function showAbout(){
@@ -114,12 +159,13 @@ function showContact(){
 
 function showNow(){
   writeLine('Currently working on:','');
-  writeLine('Nothing at the moment.','small');
+  writeLine('Kitbash','small');
   writeLine('','');
   writeLine('Currently interested in:','');
   const interests = [
-    'Docker — container orchestration and deployment',
-    'Document Archives — preservation and organization of leaked documents'
+    'Local Docker Server — a personal, local server for development and hosting',
+    'Document Archives — collecting leaked, forgotten, or released documents on various government, corporate, and historical topics',
+    'Local-AI — exploring running AI models locally for various utilities, experiments, and fun'
   ];
   interests.forEach(i => writeLine(i, 'small'));
 }
@@ -149,6 +195,7 @@ function runCommand(cmd){
     case 'resume':
       downloadResume();
       break;
+    case 'mute': toggleMute(); break;
     case 'clear': output.innerHTML=''; break;
     default: writeLine(`Command not found: ${c} — type 'help'`, 'small');
   }
@@ -170,6 +217,9 @@ cmdline.addEventListener('keydown', (e)=>{
 // initial display
 writeLine('');
 typeLines(["\nTerminal Portfolio\n","Type 'help' to begin.\n"],0, ()=>{ cmdline.focus(); });
+
+// Initialize audio
+initializeAudio();
 
 // focus on click
 document.getElementById('terminal').addEventListener('click', ()=> cmdline.focus());
