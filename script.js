@@ -49,7 +49,7 @@ function toggleMute() {
 }
 
 const projects = [
-  {name: "This portfolio", desc: "Terminal-style portfolio site (this site)", status: 'Live'},
+  {name: "This portfolio", desc: "Terminal-style portfolio site (this site)", status: 'Work-in-Progress, Live'},
   {name: "KitBash", desc: "A beautiful, feature-rich multi-tool website built with pure HTML, CSS, and vanilla JavaScript. ", status: 'Live'},
   {name: "Ron", desc: "A small, friendly Discord bot that provides utilities and small fun commands.", status: 'Live, Maintained'},
   {name: "Kevin", desc: "A Discord bot for reminders and periodic messages.", status: 'Live, Maintained'},
